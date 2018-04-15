@@ -1,0 +1,12 @@
+[Unit]
+Description=CDNBoxd Service
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/<home>/CDNBoxd/cdnboxd
+StandardOutput=journal
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

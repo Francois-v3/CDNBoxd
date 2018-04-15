@@ -1,0 +1,11 @@
+
+.bw { background-color: green; }
+.bw.ovbw { background-color: red; }
+.head .action { margin: 0 30px; }
+.head .name { font-size: 150%; }
+.head .dnscount { margin-left: 20px; }
+table { width: 100%; }
+td.name { }
+td.number { text-align: right; }
+td.status { text-align: center; }
+

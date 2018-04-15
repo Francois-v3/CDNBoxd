@@ -1,0 +1,55 @@
+{
+  "dnsserver": {
+    "domain": "cdnboxd.mydomain.org", "port": 53, "nsnum": 2, "nsttl": 3600, "attl": 20
+  },
+  "httpserver": {
+    "port": 1080, "authorization": "Basic XXXXXXXXXX=="
+  },
+  "states": {
+    "penalgdown": 60
+  },
+  "perf": {
+    "domain": "www.mydomain.org",
+    "beaconurl": "http://radar.mydomain.org",
+    "delay": 5000,
+    "weights": { "FR": 50, "default": 100 }
+  },
+  "varnishmetrics": {
+    "sess_conn": "MAIN.sess_conn",
+    "client_req": "MAIN.client_req",
+    "g_bytes": "SMA.s0.g_bytes",
+    "g_space": "SMA.s0.g_space"
+  },
+  "cdnboxes": [
+    {
+      "name": "Node1", "hostname": "node1.mydomain.org",
+      "targetbw": 500,
+      "countries": [ "FR", "BE" ],
+      "isns": true
+    },
+    {
+      "name": "Node2", "hostname": "node2.mydomain.org",
+      "targetbw": 500,
+      "countries": [ "FR", "BE" ],
+      "isns": true
+    },
+    {
+      "name": "Node3", "hostname": "legacycdn.mydomain.org",
+      "fixscore": 1000,
+      "countries": "ALL",
+      "isns": false, "cname": true
+    }
+  ],
+  "applis": {
+    "a1": [
+      { "cdnbox": "Node3" },
+      { "cdnbox": "Node1" },
+      { "cdnbox": "Node2" }
+    ],
+    "test": [
+      { "cdnbox": "Node1", "fixscore": 1000, "countries": "ALL" },
+      { "cdnbox": "Node1" },
+      { "cdnbox": "Node2" }
+    ]
+  }
+}

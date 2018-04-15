@@ -1,12 +1,14 @@
 # CDNBoxd
 A DNS distributed Global Load Balancing with geolocation and bandwith shaping.
 
-<h2>How to install</h2>
+##Features
 
-<h2>Configuation file</h2>
+##How to install
 
-<p>{</p>
-<p>  "dnsserver": { </p>
+##Configuation file
+
+```javascript
+  "dnsserver": { 
      "domain": sous domaine géré par cdnboxd,
      "port": port DNS utilisé, 53 par défaut,
      "nsnum": nombre d'enregistrement NS,
@@ -95,4 +97,5 @@ A DNS distributed Global Load Balancing with geolocation and bandwith shaping.
       }
     ]
   ]
+```
 

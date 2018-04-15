@@ -1,19 +1,33 @@
 # CDNBoxd
 A DNS distributed Global Load Balancing with geolocation and bandwith shaping.
 
-##Features
+## Features
 
-##How to install
+* DNS load balancer
+* Limit bandwith by node
+* GeoLocation
+* EDNS support for Geolocation.
+* alerting based in error rate.
+* logging to elasticsearch thru rsyslog.
 
-##Configuation file
+## How to install
+
+* git clone
+* download GeoLite2 Country from https://dev.maxmind.com/geoip/geoip2/geolite2/ into CDNBoxd directory
+* edit the configuration file
+* edit cdnboxd.service file
+* install cdnboxd.service into systemd
+* start CDNBoxd with systemctl start cdnboxd.service
+
+## Configuation file
 
 ```javascript
   "dnsserver": { 
-     "domain": sous domaine géré par cdnboxd,
-     "port": port DNS utilisé, 53 par défaut,
-     "nsnum": nombre d'enregistrement NS,
-     "nsttl": ttl enreg NS et SOA en s,
-     "attl": ttl des enreg A en s}, 
+     "domain": domain answered, any request to other domain will not be answered,
+     "port": DNS port, default to 53,
+     "nsnum": number of NS record,
+     "nsttl": ttl for NS and SOA records (second),
+     "attl": ttl for A and AAAA records (second), 
      "dnscountdownratio" : ratio de réduction des requêtes DNS globales (par défaut 1.2).
      "dnscountavgmin": débit moyen minimum. 1.5 par défaut.
      "globalthrottlelimit": limite de croissante de blocage global des requêtes, par défaut 2.

@@ -22,8 +22,8 @@ To keep it simple, a CDNBox is a node of CDNBoxd.
 
 * git clone
 * download GeoLite2 Country from https://dev.maxmind.com/geoip/geoip2/geolite2/ into CDNBoxd directory
-* edit the configuration file
-* edit cdnboxd.service file
+* copy config-template.json to config.json and change it to your settings.
+* edit cdnboxd.service cdnboxd file changing <home> to your directory.
 * install cdnboxd.service into systemd
 * start CDNBoxd with systemctl start cdnboxd.service
 
@@ -184,12 +184,11 @@ Config file (config-template.json) is:
 }
 ```
 
-Add the following DNS record:
+DNS records:
 
-cdnboxd.mydomain.org IN NS node1.mydomain.org.
-cdnboxd.mydomain.org IN NS node2.mydomain.org.
-
-www.mydomain.org IN CNAME a1.cdnboxd.mydomain.org.
-test.mydomain.org IN CNAME test.cdnboxd.mydomain.org.
+* cdnboxd.mydomain.org IN NS node1.mydomain.org.
+* cdnboxd.mydomain.org IN NS node2.mydomain.org.
+* www.mydomain.org IN CNAME a1.cdnboxd.mydomain.org.
+* test.mydomain.org IN CNAME test.cdnboxd.mydomain.org.
 
 

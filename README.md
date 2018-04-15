@@ -5,9 +5,8 @@ A DNS distributed Global Load Balancing with geolocation and bandwith shaping.
 
 <h2>Configuation file</h2>
 
-<ul>
-<li>{</li>
-  "dnsserver": { 
+<p>{</p>
+<p>  "dnsserver": { </p>
      "domain": sous domaine géré par cdnboxd,
      "port": port DNS utilisé, 53 par défaut,
      "nsnum": nombre d'enregistrement NS,

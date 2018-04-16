@@ -21,15 +21,18 @@ To keep it simple, a CDNBox is a node of CDNBoxd.
 ## How to install
 
 * git clone
-* download GeoLite2 Country from https://dev.maxmind.com/geoip/geoip2/geolite2/ into CDNBoxd directory
+* npm install
+* download GeoLite2 Country from https://dev.maxmind.com/geoip/geoip2/geolite2/ and copy GeoLite2-Country.mmdb into CDNBoxd directory
 * copy config-template.json to config.json and change it to your settings.
-* edit cdnboxd.service cdnboxd file changing <home> to your directory.
+* edit cdnboxd.service file changing <home> to your directory.
 * install cdnboxd.service into systemd
-* start CDNBoxd with systemctl start cdnboxd.service
+* start CDNBoxd with "systemctl start cdnboxd.service"
+
+Repeat for each node.
 
 ## Configuation file
 
-All fields with default value are optionnal.
+All fields with default value are optionnal. Config is exactly the same on each node.
 
 ```javascript
   "dnsserver": { 

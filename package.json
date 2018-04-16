@@ -1,0 +1,25 @@
+{
+  "name": "cdnboxd",
+  "version": "1.0.0",
+  "description": "A DNS distributed Global Load Balancing with geolocation and bandwith shaping.",
+  "main": "cdnboxd.js",
+  "dependencies": {
+    "maxmind": "^2.5.0",
+    "native-dns": "^0.7.0",
+    "nodemailer": "^4.6.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Francois-v3/CDNBoxd.git"
+  },
+  "author": "Francois Veux",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Francois-v3/CDNBoxd/issues"
+  },
+  "homepage": "https://github.com/Francois-v3/CDNBoxd#readme"
+}

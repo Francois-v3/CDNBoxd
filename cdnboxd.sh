@@ -6,4 +6,4 @@ cd $CDNBOXDDIR
 PATH=".:$PATH"
 # launch node loging output directly to syslog
 export UV_THREADPOOL_SIZE=16
-./node cdnboxd.js | logger -p local6.notice -t cdnboxd -u /run/systemd/journal/syslog &
+./node lib/cdnboxd.js | logger -p local6.notice -t cdnboxd -u /run/systemd/journal/syslog &

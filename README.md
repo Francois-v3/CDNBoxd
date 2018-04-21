@@ -13,13 +13,14 @@ To keep it simple, a CDNBox is a node of CDNBoxd.
 * Alerting based on error rate.
 * Logging to elasticsearch thru rsyslog.
 * API for monitoring and configuration changes.
-* Client side DNS resolution et connection measurment based on Resource Timing.
-* UI
+* UI (companion project, coming soon).
+* Client side DNS resolution and connection time measurment based on Resource Timing.
 * varnishstat metric collector.
 * CDNBox's local service testing (HTTP).
 
 ## How to install
 
+* Require node (8+ LTS) and npm. Node v8.9.4 heavily tested. v8.11.1 in progress ...
 * git clone
 * npm install
 * download GeoLite2 Country from https://dev.maxmind.com/geoip/geoip2/geolite2/ and copy GeoLite2-Country.mmdb into CDNBoxd directory
@@ -29,6 +30,12 @@ To keep it simple, a CDNBox is a node of CDNBoxd.
 * start CDNBoxd with "systemctl start cdnboxd.service"
 
 Repeat for each node.
+
+## Deployment and upgrade tips
+
+when you have different nodes other different operators to run CDNBoxd, the major risk is bug. To manage this risk, we advice you to adopt a canari strategy. Choose a referral node that you upgrade first, then wait for at least one day and have a look to errors. If everything looks ok, upgrade an other set of nodes, wait a least one day. Repeat until all nodes are updated.
+
+We advice you to include node in your deployment. For example, clone the repo files in another repo where you add node binary, node modules, GEO database and configuration file. Script your deployment, but maintain a human validation before to launch each set of nodes. 
 
 ## Configuation file
 
@@ -74,7 +81,7 @@ All fields with default value are optionnal. Config is exactly the same on each 
       "proto": "http:" ou "https:", default protocol for this CDNBox (default to HTTPS),
       "isns": is this CDNBox is a DNS server (default to false),
       "cname": serve CNAME record instead of A or AAAA, (default to false),
-      "penal": pénalité initiale, 100 par défaut.
+      "penal": default value of global bandwith saturation indicator, default to 100. Will be increased if BW saturated.
       "ishttp": is this CDNBox serve HTTP (other than CDNBoxd trafic itself),
       "status": initial HTTP trafic status (on/off),
       "targetbw": target bandwith for this node,
@@ -83,22 +90,22 @@ All fields with default value are optionnal. Config is exactly the same on each 
       "perfURL": performance measurment URL (default to <proto>://<hostname>/cdn/image.gif),
       "addscore": add a fixed value to performance (millisecond, default to 0),
       "fixscore": set a fixed value to performance (desactivate performance measurment),
-      "dnsthrottlebwratio" : définit le ratio de targetbw high/low de blocage des requêtes DNS.
-      "dnsthrottlelowratio" : active et définit le ratio low de blocage des requêtes DNS.
-      "dnsthrottlehighratio" : active et définit le ratio high de blocage des requêtes DNS.
-      "nspriorityratio" : coefficient de biais d'un la liste des NS. 1 par défaut. 0 = priorité maximale.
-      "nsgroup" : si définit, assure qu'il y a au moins 2 group dans la liste des NS.
+      "dnsthrottlebwratio": define high/low targetbw ratio for targeted bandwith DNS throttle.
+      "dnsthrottlelowratio": enable and define ratio of low targetbw ratio for targeted bandwith DNS throttle.
+      "dnsthrottlehighratio": enable and define ratio of high targetbw ratio for targeted bandwith DNS throttle.
+      "nspriorityratio": used to change distribution of a node un NS list in case of natural node overload. Default to 1. 0 means maximum.
+      "nsgroup": if defined, enforce that nslist contains always different nsgroup. Usually, nsgroup contains operator's name.
       "varnishmetrics": if true, we collect varnishstate metric defined in "varnishmetrics".
-      "localtests": définit des test locaux. [
+      "localtests": define local http test (to be used in appli section). [
         { "name": "apache", "url": "http://127.0.0.1:8080/" },
         ... 
       ],
-      "notification": { si présent, active les notifications d'erreur sur cette CDNBox.
-        "email": emails destinataires.
-        "threshold": seuil de déclenchement des alertes (nombre sur période).
-        "period": période pour le seuil de déclenchement des alertes.
-        "lastmessagenumber": nombre de dernières erreurs dans le corp du message.
-        "remindertime": délai avant de rappeler un état d'alerte.
+      "notification": { if defined, enable error notification ont this node. Defining it on all nodes is a bad idea !
+        "email": notification are sent to this emails, which can be comma separated list.
+        "threshold": threshold of error number on period to notify.
+        "period": theshold period.
+        "lastmessagenumber": number of error to show in the message body.
+        "remindertime": period of reminder.
       }
     },
     { ...
@@ -110,11 +117,11 @@ All fields with default value are optionnal. Config is exactly the same on each 
       {
         // first node will be serve if none of the other match.
         "cdnbox": "ABC-victim2" node's name,
-        "addscore": change addscore for this node in this application,
-        "fixscore": change fixscore for this node in this application,
-        "countries": surcharge le countries soit "ALL", soit [ "US", "CA" ],
-        "continents": surcharge les continents de la CDNbox, sous forme [ "EU", "NA" ]. 
-        "localtests": COnditionne sur des tests locaux. [ "apache", ... ]
+        "addscore": if defined, overload addscore for this node in this application,
+        "fixscore": if defined, overload fixscore for this node in this application,
+        "countries": if defined, overload cdnbox's countries "ALL", or [ "US", "CA" ],
+        "continents": if defined, overload cdnbox's continents, like [ "EU", "NA" ]. 
+        "localtests": if defined, exclude this cdnbox if one the test is false. [ "apache", ... ]
       },
       { ...
       }
@@ -141,10 +148,8 @@ Config file (config-template.json) is:
   "httpserver": { "port": 1080, "authorization": "Basic XXXXXXXXXX==" },
   "states": { "penalgdown": 60 },
   "perf": {
-    "domain": "www.mydomain.org",
-    "beaconurl": "http://test.mydomain.org",
-    "delay": 5000,
-    "weights": { "FR": 50, "default": 100 }
+    "domain": "www.mydomain.org", "beaconurl": "http://test.mydomain.org",
+    "delay": 5000, "weights": { "FR": 50, "default": 100 }
   },
   "varnishmetrics": {
     "sess_conn": "MAIN.sess_conn",
@@ -155,28 +160,20 @@ Config file (config-template.json) is:
   "cdnboxes": [
     {
       "name": "Node1", "hostname": "node1.mydomain.org",
-      "targetbw": 500,
-      "countries": [ "FR", "BE" ],
-      "isns": true
+      "targetbw": 500, "countries": [ "FR", "BE" ], "isns": true
     },
     {
       "name": "Node2", "hostname": "node2.mydomain.org",
-      "targetbw": 500,
-      "countries": [ "FR", "BE" ],
-      "isns": true
+      "targetbw": 500, "countries": [ "FR", "BE" ], "isns": true
     },
     {
       "name": "Node3", "hostname": "legacycdn.mydomain.org",
-      "fixscore": 1000,
-      "countries": "ALL",
-      "isns": false, "cname": true
+      "fixscore": 1000, "countries": "ALL", "isns": false, "cname": true
     }
   ],
   "applis": {
     "a1": [
-      { "cdnbox": "Node3" },
-      { "cdnbox": "Node1" },
-      { "cdnbox": "Node2" }
+      { "cdnbox": "Node3" }, { "cdnbox": "Node1" }, { "cdnbox": "Node2" }
     ],
     "test": [
       { "cdnbox": "Node1", "fixscore": 1000, "countries": "ALL" },

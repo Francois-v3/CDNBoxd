@@ -16,7 +16,7 @@ To keep it simple, a CDNBox is a node of CDNBoxd.
 * UI (companion project, coming soon).
 * Client side DNS resolution and connection time measurment based on Resource Timing.
 * varnishstat metric collector.
-* CDNBox's local service testing (HTTP).
+* CDNBox\'s local service testing (HTTP).
 
 ## How to install
 
@@ -74,10 +74,10 @@ All fields with default value are optionnal. Config is exactly the same on each 
   },
 
   "cdnboxes": [
-    { "name": node's name ,
-      "hostname": node's hostname without final dot,
-      "countries": node's country localisation, "ALL" or array of countries like [ "US", "CA" ],
-      "continents": node's continent localisation, array like [ "EU", "NA" ]. For NS records order, we use array of countries, then continent, then country "ALL". For A and AAAA records, we use continents only if no conntries are defined.
+    { "name": node\'s name ,
+      "hostname": node\'s hostname without final dot,
+      "countries": node\'s country localisation, "ALL" or array of countries like [ "US", "CA" ],
+      "continents": node\'s continent localisation, array like [ "EU", "NA" ]. For NS records order, we use array of countries, then continent, then country "ALL". For A and AAAA records, we use continents only if no conntries are defined.
       "proto": "http:" ou "https:", default protocol for this CDNBox (default to HTTPS),
       "isns": is this CDNBox is a DNS server (default to false),
       "cname": serve CNAME record instead of A or AAAA, (default to false),
@@ -94,7 +94,7 @@ All fields with default value are optionnal. Config is exactly the same on each 
       "dnsthrottlelowratio": enable and define ratio of low targetbw ratio for targeted bandwith DNS throttle.
       "dnsthrottlehighratio": enable and define ratio of high targetbw ratio for targeted bandwith DNS throttle.
       "nspriorityratio": used to change distribution of a node un NS list in case of natural node overload. Default to 1. 0 means maximum.
-      "nsgroup": if defined, enforce that nslist contains always different nsgroup. Usually, nsgroup contains operator's name.
+      "nsgroup": if defined, enforce that nslist contains always different nsgroup. Usually, nsgroup contains operator\'s name.
       "varnishmetrics": if true, we collect varnishstate metric defined in "varnishmetrics".
       "localtests": define local http test (to be used in appli section). [
         { "name": "apache", "url": "http://127.0.0.1:8080/" },
@@ -116,11 +116,11 @@ All fields with default value are optionnal. Config is exactly the same on each 
     "a1": [
       {
         // first node will be serve if none of the other match.
-        "cdnbox": "ABC-victim2" node's name,
+        "cdnbox": "ABC-victim2" node\'s name,
         "addscore": if defined, overload addscore for this node in this application,
         "fixscore": if defined, overload fixscore for this node in this application,
-        "countries": if defined, overload cdnbox's countries "ALL", or [ "US", "CA" ],
-        "continents": if defined, overload cdnbox's continents, like [ "EU", "NA" ]. 
+        "countries": if defined, overload cdnbox\'s countries "ALL", or [ "US", "CA" ],
+        "continents": if defined, overload cdnbox\'s continents, like [ "EU", "NA" ]. 
         "localtests": if defined, exclude this cdnbox if one the test is false. [ "apache", ... ]
       },
       { ...

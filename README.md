@@ -41,7 +41,7 @@ We advice you to include node in your deployment. For example, clone the repo fi
 
 All fields with default value are optionnal. Config is exactly the same on each node.
 
-```javascript
+```
   "dnsserver": { 
      "domain": domain answered, any request to other domain will not be answered,
      "port": DNS port, default to 53,
@@ -74,7 +74,7 @@ All fields with default value are optionnal. Config is exactly the same on each 
   },
 
   "cdnboxes": [
-    { "name": node\'s name ,
+    { "name": node's name ,
       "hostname": node\'s hostname without final dot,
       "countries": node\'s country localisation, "ALL" or array of countries like [ "US", "CA" ],
       "continents": node\'s continent localisation, array like [ "EU", "NA" ]. For NS records order, we use array of countries, then continent, then country "ALL". For A and AAAA records, we use continents only if no conntries are defined.

@@ -21,7 +21,7 @@ To keep it simple, a CDNBox is a node of CDNBoxd.
 ## How to install
 
 * Require node (8+ LTS) and npm. Production tested releases Node v8.9.4, v8.11.1
-* git clone
+* git clone https://github.com/Francois-v3/CDNBoxd.git
 * npm install
 * download GeoLite2 Country from https://dev.maxmind.com/geoip/geoip2/geolite2/ and copy GeoLite2-Country.mmdb into CDNBoxd directory
 * copy config-template.json to config.json and change it to your settings.

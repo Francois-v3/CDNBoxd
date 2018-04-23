@@ -20,7 +20,7 @@ To keep it simple, a CDNBox is a node of CDNBoxd.
 
 ## How to install
 
-* Require node (8+ LTS) and npm. Node v8.9.4 heavily tested. v8.11.1 in progress ...
+* Require node (8+ LTS) and npm. Production tested releases Node v8.9.4, v8.11.1
 * git clone
 * npm install
 * download GeoLite2 Country from https://dev.maxmind.com/geoip/geoip2/geolite2/ and copy GeoLite2-Country.mmdb into CDNBoxd directory
@@ -33,9 +33,9 @@ Repeat for each node.
 
 ## Deployment and upgrade tips
 
-when you have different nodes other different operators to run CDNBoxd, the major risk is bug. To manage this risk, we advice you to adopt a canari strategy. Choose a referral node that you upgrade first, then wait for at least one day and have a look to errors. If everything looks ok, upgrade an other set of nodes, wait a least one day. Repeat until all nodes are updated.
+When you have different nodes other different operators to run CDNBoxd, the major risk is bug. To manage this risk, we advice you to adopt a canari strategy. Choose a referral node that you upgrade first, then wait for at least one day and have a look to errors. If everything looks ok, upgrade an other set of nodes, wait a least one day. Repeat until all nodes are updated.
 
-We advice you to include node in your deployment. For example, clone the repo files in another repo where you add node binary, node modules, GEO database and configuration file. Script your deployment, but maintain a human validation before to launch each set of nodes. 
+We advice you to include added files in your deployment script or tool. For example, clone the repo files in another repo where you add node binary, node modules, GEO database and configuration file, then deploy with remote command  "git pull; systemctl restart cdnboxd.service". Automate your deployment, but keep a human to launch deployment of each set of nodes. 
 
 ## Configuation file
 

@@ -2,11 +2,11 @@
   "name": "cdnboxd",
   "version": "1.0.0",
   "description": "A DNS distributed Global Load Balancing with geolocation and bandwith shaping.",
-  "main": "cdnboxd.js",
+  "main": "lib/cdnboxd.js",
   "dependencies": {
-    "maxmind": "^2.5.0",
-    "native-dns": "^0.7.0",
-    "nodemailer": "^4.6.4"
+    "native-dns-packet": "^0.1.1",
+    "nodemailer": "^4.6.4",
+    "maxmind": "^2.6.0"
   },
   "devDependencies": {},
   "scripts": {

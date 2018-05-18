@@ -123,6 +123,7 @@ All fields with default value are optionnal. Config is exactly the same on each 
         "countries": if defined, overload cdnbox's countries "ALL", or [ "US", "CA" ],
         "continents": if defined, overload cdnbox's continents, like [ "EU", "NA" ]. 
         "localtests": if defined, exclude this cdnbox if one the test is false. [ "apache", ... ]
+        "dontthrottle": if defined and true on the first node, throttle dont apply.
       },
       { ...
       }

@@ -4,7 +4,6 @@
   "description": "A DNS distributed Global Load Balancing with geolocation and bandwith shaping.",
   "main": "lib/cdnboxd.js",
   "dependencies": {
-    "native-dns-packet": "^0.1.1",
     "nodemailer": "^4.6.4",
     "maxmind": "^2.6.0"
   },

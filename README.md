@@ -50,7 +50,7 @@ All fields with default value are optionnal. Config is exactly the same on each 
      "attl": ttl for A and AAAA records (second), 
      "dnscountdownratio" : global request rate reduction ratio (default to 1.2).
      "dnscountavgmin": minimum global request rate by node (default to 1.5).
-     "globalthrottlelimit": global request rate growup ratio to throttle (default to 2).
+     "globalthrottlelimit": global request rate growup ratio to throttle (default to 2), only or cdnboxes with targetbw.
      "globalthrottlebwratio": targetbw ratio to activate global request throttle (default to 0.4).
   },
   "httpserver": {
@@ -123,7 +123,6 @@ All fields with default value are optionnal. Config is exactly the same on each 
         "countries": if defined, overload cdnbox's countries "ALL", or [ "US", "CA" ],
         "continents": if defined, overload cdnbox's continents, like [ "EU", "NA" ]. 
         "localtests": if defined, exclude this cdnbox if one the test is false. [ "apache", ... ]
-        "dontthrottle": if defined and true on the first node, throttle dont apply.
       },
       { ...
       }

@@ -72,7 +72,7 @@ All fields with default value are optionnal. Config is exactly the same on each 
         the json name sent to ES.
     ...
   },
-
+  "clustersecret": secretkey of cluster, use or communication between nodes, default to httpserver.authorization.
   "cdnboxes": [
     { "name": node's name ,
       "hostname": node's hostname without final dot,

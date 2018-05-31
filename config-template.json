@@ -1,4 +1,5 @@
 {
+  "clustersecret": "ChangeThisToYourSecret",
   "dnsserver": {
     "domain": "cdnboxd.mydomain.org", "port": 53, "nsnum": 2, "nsttl": 3600, "attl": 20
   },

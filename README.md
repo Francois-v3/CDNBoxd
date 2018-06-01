@@ -139,10 +139,23 @@ All fields with default value are optionnal. Config is exactly the same on each 
 
 ## API
 
+### global (no authentcation)
+*  /cdn/image.gif: get a pixel image. Use by default to measure response time.
+*  /cdn/perf.js: get the script to measure cdnboxd performance (Resource Timing).
+*  /cdn/beacon: beacon to upload perf.js measurements.
+*  /cdn/states: returns a JSON with metrics and state of cdnbox.
+*  /cdn/penalite: return a saturation indicator (100 means no saturation, growing if saturated).
+
+### global (with authentcation)
+*  /cdn/cdnboxStates: dumps memory of cdnbox in JSON format (debuging).
+*  /cdn/api/states: returns a JSON with metrics and state of cdnbox.
+*  /cdn/cdnboxes: returns a HTML with metrics and state of cdnbox.
+*  /cdn/console: show a summary of all cdnboxes.
+
 ### Config API (authentication required).
-  /cdn/config GET: get the config.json content of cdnbox.
-  /cdn/config PUT: set the config.json on cdnbox and reload the config.
-  /cdn/config/copyfrom/<cdnboxname> ANY: copy and reload the config.json from <cdnboxname> on cdnbox.
+*  /cdn/config GET: get the config.json content of cdnbox.
+*  /cdn/config PUT: set the config.json on cdnbox and reload the config.
+*  /cdn/config/copyfrom/\<cdnboxname\> ANY: copy and reload the config.json from \<cdnboxname\> on cdnbox.
 
 ## Example
 

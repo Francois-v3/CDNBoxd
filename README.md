@@ -108,7 +108,6 @@ All fields with default value are optionnal. Config is exactly the same on each 
         "remindertime": period of reminder.
       ,}
       "dontbindall4": by default we bind on port 53 (DNS) on all local ipv4 adresses. Setting this to true to bind only public ipv4 address (returned by DNS lookup). Useful to set a local bind9 listening on 127.0.0.1:53.
-      "pushUDP": if true, statevector is push over DNS (UDP) instead of HTTP (TCP). Should became the default in future.
     },
     { ...
     }

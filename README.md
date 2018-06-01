@@ -139,6 +139,11 @@ All fields with default value are optionnal. Config is exactly the same on each 
 
 ## API
 
+### Config API (authentication required).
+  /cdn/config GET: get the config.json content of cdnbox.
+  /cdn/config PUT: set the config.json on cdnbox and reload the config.
+  /cdn/config/copyfrom/<cdnboxname> ANY: copy and reload the config.json from <cdnboxname> on cdnbox.
+
 ## Example
 
 Serve www.mydomain.org on a hybrid CDN with one legacy CDN (legacycdn.mydomain.org) and two Vanish boxes.

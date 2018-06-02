@@ -13,7 +13,7 @@ To keep it simple, a CDNBox is a node of CDNBoxd.
 * Alerting based on error rate.
 * Logging to elasticsearch thru rsyslog.
 * API for monitoring and configuration changes.
-* UI (companion project, coming soon).
+* UI (companion project), https://github.com/Doloros/CDNBOX-d-Admin
 * Client side DNS resolution and connection time measurment based on Resource Timing.
 * varnishstat metric collector.
 * CDNBox's local service testing (HTTP).

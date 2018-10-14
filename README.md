@@ -20,7 +20,7 @@ To keep it simple, a CDNBox is a node of CDNBoxd.
 
 ## How to install
 
-* Require node (8+ LTS) and npm. Production tested releases Node v8.9.4, v8.11.1
+* Require node (8+ LTS) and npm. Production tested releases Node v8.9.4, v8.11.1, v8.11.4
 * git clone https://github.com/Francois-v3/CDNBoxd.git
 * npm install
 * download GeoLite2 Country from https://dev.maxmind.com/geoip/geoip2/geolite2/ and copy GeoLite2-Country.mmdb into CDNBoxd directory
@@ -72,8 +72,8 @@ All fields with default value are optionnal. Config is exactly the same on each 
         the json name sent to ES.
     ...
   },
-  "clustersecret": secretkey of cluster, use or communication between nodes, default to httpserver.authorization.
-  "cdnboxes": [
+  "clustersecret": secretkey of cluster, use for communication between nodes, default to httpserver.authorization.
+  "cdnboxes": [ // order only matters to who am i process.
     { "name": node's name ,
       "hostname": node's hostname without final dot,
       "countries": node's country localisation, "ALL" or array of countries like [ "US", "CA" ],
@@ -142,8 +142,9 @@ All fields with default value are optionnal. Config is exactly the same on each 
 *  /cdn/image.gif: get a pixel image. Use by default to measure response time.
 *  /cdn/perf.js: get the script to measure cdnboxd performance (Resource Timing).
 *  /cdn/beacon: beacon to upload perf.js measurements.
-*  /cdn/states: returns a JSON with metrics and state of cdnbox.
+*  /cdn/states: returns a JSON with metrics and state of cdnbox (deprecated).
 *  /cdn/penalite: return a saturation indicator (100 means no saturation, growing if saturated).
+*  /cdn/whoami: return an 204 (no content), whith external IP in X-IP header (used to determine which node we are).
 
 ### global (with authentcation)
 *  /cdn/cdnboxStates: dumps memory of cdnbox in JSON format (debuging).

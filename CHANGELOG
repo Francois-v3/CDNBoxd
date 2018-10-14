@@ -1,0 +1,5 @@
+
+* 1539537083:
+ - getremovebw over http has been removed. /cdn/states is now deprecated and will be removed next.
+ - discovering which node we are is based on DNS IPv4 address. This was done by looking for IPv4 address on each network interface. Unfortunately, these addresses are not present on some VM like those of AWS or GCE. This previously was fixed by adding the external IP to the loopback interface, but this leads to get loopback bandwith instead of the rigth one. For this reason, we now use a whoami protocol. A call to /cdn/whoami responds with the external IP address of the VM (as headers). We use this address to match the DNS entry, find the local address corresponding an then find the right network interface.
+

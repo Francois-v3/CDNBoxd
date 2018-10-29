@@ -1,4 +1,8 @@
 
+* 1540824449
+ - every node should have 1539537083 before to migrate to this release, because  /cdn/states is removed.
+ - probes use now a separate process to avoid busy event loop lag.
+
 * 1539537083:
  - getremovebw over http has been removed. /cdn/states is now deprecated and will be removed next.
  - discovering which node we are is based on DNS IPv4 address. This was done by looking for IPv4 address on each network

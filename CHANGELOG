@@ -1,4 +1,9 @@
 
+* 1544982708
+ - changes for Node 10 compliance.
+ - Probe process now auto restarts.
+ - randomly run probes to avoid collision.
+
 * 1540824449
  - every node should have 1539537083 before to migrate to this release, because  /cdn/states is removed.
  - probes use now a separate process to avoid busy event loop lag.

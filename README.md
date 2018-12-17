@@ -20,7 +20,7 @@ To keep it simple, a CDNBox is a node of CDNBoxd.
 
 ## How to install
 
-* Require node (8+ LTS) and npm. Production tested releases Node v8.9.4, v8.11.1, v8.11.4
+* Require node (8+ LTS) and npm. Production tested releases Node v8.9.4, v8.11.1, v8.11.4, v10.14.1
 * git clone https://github.com/Francois-v3/CDNBoxd.git
 * npm install
 * download GeoLite2 Country from https://dev.maxmind.com/geoip/geoip2/geolite2/ and copy GeoLite2-Country.mmdb into CDNBoxd directory
@@ -50,7 +50,8 @@ All fields with default value are optionnal. Config is exactly the same on each 
      "attl": ttl for A and AAAA records (second), 
      "dnscountdownratio" : global request rate reduction ratio (default to 1.2).
      "dnscountavgmin": minimum global request rate by node (default to 1.5).
-     "globalthrottlelimit": global request rate growup ratio to throttle (default to 2), only or cdnboxes with targetbw.
+     "globalthrottlelimit": global request rate growup ratio to throttle (default to 2), only or cdnboxes
+                            with targetbw.
      "globalthrottlebwratio": targetbw ratio to activate global request throttle (default to 0.4).
   },
   "httpserver": {
@@ -68,20 +69,23 @@ All fields with default value are optionnal. Config is exactly the same on each 
   },
 
   "varnishmetrics": {  // optional
-    "es_name": "varnish_name", define a varnish metric. varnish_name is the varnishstat entry name. es_name is
-        the json name sent to ES.
+    "es_name": "varnish_name", define a varnish metric. varnish_name is the varnishstat entry name. es_name
+               is the json name sent to ES.
     ...
   },
   "clustersecret": secretkey of cluster, use for communication between nodes, default to httpserver.authorization.
   "cdnboxes": [ // order only matters to who am i process.
-    { "name": node's name ,
+    { "name": node's name,
       "hostname": node's hostname without final dot,
       "countries": node's country localisation, "ALL" or array of countries like [ "US", "CA" ],
-      "continents": node's continent localisation, array like [ "EU", "NA" ]. For NS records order, we use array of countries, then continent, then country "ALL". For A and AAAA records, we use continents only if no conntries are defined.
-      "proto": "http:" ou "https:", default protocol for this CDNBox (default to HTTPS),
+      "continents": node's continent localisation, array like [ "EU", "NA" ]. For NS records order, we use
+                    array of countries, then continent, then country "ALL". For A and AAAA records, we use
+                    continents only if no conntries are defined.
+      "proto": "http:" ou "https:", default protocol for this CDNBox (default to "https:"),
       "isns": is this CDNBox is a DNS server (default to false),
       "cname": serve CNAME record instead of A or AAAA, (default to false),
-      "penal": default value of global bandwith saturation indicator, default to 100. Will be increased if BW saturated.
+      "penal": default value of global bandwith saturation indicator, default to 100. Will be increased
+               if BW saturated.
       "ishttp": is this CDNBox serve HTTP (other than CDNBoxd trafic itself),
       "status": initial HTTP trafic status (on/off),
       "targetbw": target bandwith for this node,
@@ -93,21 +97,26 @@ All fields with default value are optionnal. Config is exactly the same on each 
       "dnsthrottlebwratio": define high/low targetbw ratio for targeted bandwith DNS throttle.
       "dnsthrottlelowratio": enable and define ratio of low targetbw ratio for targeted bandwith DNS throttle.
       "dnsthrottlehighratio": enable and define ratio of high targetbw ratio for targeted bandwith DNS throttle.
-      "nspriorityratio": used to change distribution of a node un NS list in case of natural node overload. Default to 1. 0 means maximum.
-      "nsgroup": if defined, enforce that nslist contains always different nsgroup. Usually, nsgroup contains operator's name.
+      "nspriorityratio": used to change distribution of a node un NS list in case of natural node overload.
+                         Default to 1. 0 means maximum.
+      "nsgroup": if defined, enforce that nslist contains always different nsgroup. Usually, nsgroup
+                 contains operator's name.
       "varnishmetrics": if true, we collect varnishstate metric defined in "varnishmetrics".
       "localtests": define local http test (to be used in appli section). [
         { "name": "apache", "url": "http://127.0.0.1:8080/" },
         ... 
       ],
-      "notification": { if defined, enable error notification ont this node. Defining it on all nodes is a bad idea !
+      "notification": { if defined, enable error notification ont this node. Defining it on all nodes is
+                        a bad idea !
         "email": notification are sent to this emails, which can be comma separated list.
         "threshold": threshold of error number on period to notify.
         "period": theshold period.
         "lastmessagenumber": number of error to show in the message body.
         "remindertime": period of reminder.
       ,}
-      "dontbindall4": by default we bind on port 53 (DNS) on all local ipv4 adresses. Setting this to true to bind only public ipv4 address (returned by DNS lookup). Useful to set a local bind9 listening on 127.0.0.1:53.
+      "dontbindall4": by default we bind on port 53 (DNS) on all local ipv4 adresses. Setting this to true
+                      to bind only public ipv4 address (returned by DNS lookup). Useful to set a local
+                      bind9 listening on 127.0.0.1:53.
     },
     { ...
     }

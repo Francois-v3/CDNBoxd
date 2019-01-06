@@ -1,4 +1,7 @@
 
+* 1546777819
+ - correct undefined issue when bind9 start slowly at reboot.
+
 * 1544982708
  - changes for Node 10 compliance.
  - Probe process now auto restarts.

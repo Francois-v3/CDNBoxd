@@ -73,8 +73,13 @@ All fields with default value are optionnal. Config is exactly the same on each 
                is the json name sent to ES.
     ...
   },
+  "tlsticketkeys": { // if present, compute TLS ticket keys file for Haproxy (bind's option tls-ticket-keys).
+    "filename": file's name. Current directory id cdnboxd one.
+    "ttl": duration of keys in ms, defaults to 86400000 (1 day),
+    "refresh": refresh period in ms. defaults to 3600000 (1 hour),
+  },
   "clustersecret": secretkey of cluster, use for communication between nodes, default to httpserver.authorization.
-  "cdnboxes": [ // order only matters to who am i process.
+  "cdnboxes": [ // order matters to who am i and tlsticket processes.
     { "name": node's name,
       "hostname": node's hostname without final dot,
       "countries": node's country localisation, "ALL" or array of countries like [ "US", "CA" ],

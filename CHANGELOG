@@ -1,4 +1,7 @@
 
+* 1552142871
+ - add tls ticket keys for haproxy.
+
 * 1546777819
  - correct undefined issue when bind9 start slowly at reboot.
 

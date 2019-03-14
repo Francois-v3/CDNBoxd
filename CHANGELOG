@@ -1,4 +1,7 @@
 
+* 1552559874
+ - fix "cdnbox updated" JSON syntax.
+
 * 1552142871
  - add tls ticket keys for haproxy.
 

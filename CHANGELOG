@@ -1,4 +1,7 @@
 
+* 1554800344
+ - Introducing TCP RTT metric collection.
+
 * 1553472380
  - Fix JSON errors messages.
 

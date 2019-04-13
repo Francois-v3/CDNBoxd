@@ -78,6 +78,9 @@ All fields with default value are optionnal. Config is exactly the same on each 
     "ttl": duration of keys in ms, defaults to 86400000 (1 day),
     "refresh": refresh period in ms. defaults to 3600000 (1 hour),
   },
+  "tcprtt": { // if present, collect TCP RTT metrics.
+    "period": collect period in ms. defaults to 5000 (5 seconds),
+  },
   "clustersecret": secretkey of cluster, use for communication between nodes, default to httpserver.authorization.
   "cdnboxes": [ // order matters to who am i and tlsticket processes.
     { "name": node's name,

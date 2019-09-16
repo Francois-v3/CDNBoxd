@@ -1,4 +1,7 @@
 
+* 1568649076
+ - Add a separate probe for IPv6.
+
 * 1554800344
  - Introducing TCP RTT metric collection.
 

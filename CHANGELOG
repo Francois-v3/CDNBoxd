@@ -1,4 +1,8 @@
 
+* 1569703889
+ - Detect and update when remote node's IP change via Probes.
+ - Fix the 127.0.1.1 problem via whoami protocol.
+
 * 1569225035
  - Add bw receive (now Trans and Recv in console).
 

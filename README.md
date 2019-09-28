@@ -122,9 +122,9 @@ All fields with default value are optionnal. Config is exactly the same on each 
         "lastmessagenumber": number of error to show in the message body.
         "remindertime": period of reminder.
       ,}
-      "dontbindall4": by default we bind on port 53 (DNS) on all local ipv4 adresses. Setting this to true
-                      to bind only public ipv4 address (returned by DNS lookup). Useful to set a local
-                      bind9 listening on 127.0.0.1:53.
+      "dontbindall4": by default we don't bind on port 53 (DNS) on all local ipv4 adresses. Setting this
+                      to false to bind on all local ipv4 addresses. Useful to set a avoid conflits with
+                      bind9 listening on 127.0.0.1:53 or systemd resolver on 127.0.0.53.
     },
     { ...
     }

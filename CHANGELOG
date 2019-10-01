@@ -1,4 +1,7 @@
 
+* 1569940093
+ - Fix score problem when default is off.
+
 * 1569703889
  - Detect and update when remote node's IP change via Probes.
  - Fix the 127.0.1.1 problem via whoami protocol.

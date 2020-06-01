@@ -1,4 +1,10 @@
 
+* 1590944563
+ - Fix the 127.0.1.1 problem (which masks IPv6 under systemd resolver) via reverse resolution of global non local IPv6 address.
+
+* 1590940535
+ - Upgrade to NodeJS 12.
+
 * 1569940093
  - Fix score problem when default is off.
 

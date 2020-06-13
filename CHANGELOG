@@ -1,4 +1,7 @@
 
+* 1592043604
+ - Avoid IPV6 alert on cdnbox without ipv6
+ - Don't Detect/update IP changes if node is cname
 * 1590944563
  - Fix the 127.0.1.1 problem (which masks IPv6 under systemd resolver) via reverse resolution of global non local IPv6 address.
 

@@ -1,4 +1,6 @@
 
+* 1602441772
+ - adding timout parameter on localtest.
 * 1594541378
  - fix btoa error in error log.
  - fix out of offset error message on some EDNS record.

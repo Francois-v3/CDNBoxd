@@ -111,7 +111,10 @@ All fields with default value are optionnal. Config is exactly the same on each 
                  contains operator's name.
       "varnishmetrics": if true, we collect varnishstate metric defined in "varnishmetrics".
       "localtests": define local http test (to be used in appli section). [
-        { "name": "apache", "url": "http://127.0.0.1:8080/" },
+        { "name": name of the test. Warning, only fisrt letter is shown in console. 
+          "url": URL to test, must return a 200 status.
+          "timeout": timeout in ms. Optional, defaults to 3500.
+        },
         ... 
       ],
       "notification": { if defined, enable error notification ont this node. Defining it on all nodes is

@@ -2,7 +2,7 @@
 A DNS distributed Global Load Balancing with geolocation and bandwith shaping.
 
 CDNBox is a solution to mix private CDN with legacy CDN. CDNBoxd is originaly the specific software used to clusterize multiple CDNBoxes. Nowdays, CDNBoxd is used out of CDNBox solution, to distribute load on Edge endpoints for example.
-To keep it simple, a CDNBox is a node of CDNBoxd.
+A CDNBox is a node of CDNBoxd.
 
 ## Features
 
@@ -16,7 +16,7 @@ To keep it simple, a CDNBox is a node of CDNBoxd.
 * UI (companion project), https://github.com/Doloros/CDNBOX-d-Admin
 * Client side DNS resolution and connection time measurment based on Resource Timing.
 * varnishstat metric collector.
-* CDNBox's local service testing (HTTP).
+* CDNBox's specific (local) service testing (HTTP).
 
 ## How to install
 
@@ -166,6 +166,7 @@ All fields with default value are optionnal. Config is exactly the same on each 
 *  /cdn/whoami: return an 204 (no content), whith external IP in X-IP header (used to determine which node we are).
 
 ### global (with authentcation)
+*  /cdn/status: reports metrics to be use by monitoring. For example, Metricbeat with http module.
 *  /cdn/cdnboxStates: dumps memory of cdnbox in JSON format (debuging).
 *  /cdn/api/states: returns a JSON with metrics and state of cdnbox.
 *  /cdn/cdnboxes: returns a HTML with metrics and state of cdnbox.

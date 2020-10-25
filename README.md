@@ -68,9 +68,11 @@ All fields with default value are optionnal. Config is exactly the same on each 
     "weights": measurment weight by country (percentage), ex: { "FR": 50, "default": 100 },
   },
 
-  "varnishmetrics": {  // optional
-    "es_name": "varnish_name", define a varnish metric. varnish_name is the varnishstat entry name. es_name
-               is the json name sent to ES.
+  "varnishmetricsoutput": optional, defaults to "log". If "log" a log record is isuued each 10s. If "status" a
+               log record is issued for each call to /cdn/status and results are included in status response.
+  "varnishmetrics":   // optional
+    "es_name": "varnish_name", define a varnish numeric metric. varnish_name is the varnishstat entry name. es_name
+               is the json name sent to ES. If varnish_name is not present, -1 value will be set.
     ...
   },
   "tlsticketkeys": { // if present, compute TLS ticket keys file for Haproxy (bind's option tls-ticket-keys).
@@ -109,7 +111,7 @@ All fields with default value are optionnal. Config is exactly the same on each 
                          Default to 1. 0 means maximum.
       "nsgroup": if defined, enforce that nslist contains always different nsgroup. Usually, nsgroup
                  contains operator's name.
-      "varnishmetrics": if true, we collect varnishstate metric defined in "varnishmetrics".
+      "varnishmetrics": if true, we collect varnishstate metric defined in "varnishmetrics". Defaults to false.
       "localtests": define local http test (to be used in appli section). [
         { "name": name of the test. Warning, only fisrt letter is shown in console. 
           "url": URL to test, must return a 200 status.

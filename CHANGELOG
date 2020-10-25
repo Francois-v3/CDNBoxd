@@ -1,5 +1,7 @@
 
 * 1603060693
+ - adding varnishmetrics to /cdn/status. Change to varnishstat format 6.5.
+* 1603060693
  - adding /cdn/status entry point.
 * 1602441772
  - adding timout parameter on localtest.

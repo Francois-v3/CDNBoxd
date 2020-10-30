@@ -1,4 +1,10 @@
 
+* 1604017875
+ - Introducing cdnboxMetrics.js. Optimize crypto/eventloop
+* 1603982384
+ - Change timeout eventloop metric from 0 to 5 to save CPU.
+* 1603955952
+ - Adds eventloop and mem to /cdn/status
 * 1603060693
  - adding varnishmetrics to /cdn/status. Change to varnishstat format 6.5.
 * 1603060693

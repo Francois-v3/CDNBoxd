@@ -1,4 +1,6 @@
 
+* 1611479197
+ - change target's cdnboxd.service to wait for nss resolution.
 * 1608033183
  - refactoring varnishmetrics
  - fix RangeError in cdnboxPacket.js:84:26

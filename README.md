@@ -71,8 +71,13 @@ All fields with default value are optionnal. Config is exactly the same on each 
   "varnishmetricsoutput": optional, defaults to "log". If "log" a log record is isuued each 10s. If "status" a
                log record is issued for each call to /cdn/status and results are included in status response.
   "varnishmetrics":   // optional
-    "es_name": "varnish_name", define a varnish numeric metric. varnish_name is the varnishstat entry name. es_name
-               is the json name sent to ES. If varnish_name is not present, -1 value will be set.
+    "es_name": "varnish_name", [Obsolete format] define a varnish numeric metric. varnish_name is the varnishstat
+               entry name. es_name is the json name sent to ES. If varnish_name is not present, -1 value will be set.
+    "es_name": { es_name is the json name sent to ES. If varnish_name is not present, -1 value will be set. 
+      "vname": "varnish_name", varnish's name of the numeric metric. varnish_name is the varnishstat entry name.
+      "dontderive": optional, default to false. If the varnish metric is a counter, it is automatically derivated.
+                    if dontderive is set to true, counter if like a gauge (usefull for uptime).
+    }
     ...
   },
   "tlsticketkeys": { // if present, compute TLS ticket keys file for Haproxy (bind's option tls-ticket-keys).

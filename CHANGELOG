@@ -1,4 +1,7 @@
 
+* 1612124170
+ - change varnish metrics format.
+ - add dontderive field to varnishmetrics.
 * 1611479197
  - change target's cdnboxd.service to wait for nss resolution.
 * 1608033183

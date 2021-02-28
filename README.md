@@ -1,7 +1,7 @@
 # CDNBoxd
 A DNS distributed Global Load Balancing with geolocation and bandwith shaping.
 
-CDNBox is a solution to mix private CDN with legacy CDN. CDNBoxd is originaly the specific software used to clusterize multiple CDNBoxes. Nowdays, CDNBoxd is used out of CDNBox solution, to distribute load on Edge endpoints for example.
+CDNBox is a solution to mix private CDN with legacy CDN. CDNBoxd is originaly the specific software used to clusterize multiple CDNBoxes. Nowdays, CDNBoxd is used out of CDNBox solution, to distribute load on Edge endpoints.
 A CDNBox is a node of CDNBoxd.
 
 ## Features
@@ -9,7 +9,7 @@ A CDNBox is a node of CDNBoxd.
 * DNS load balancer
 * Distribute DNS/HTTP trafic based on geolocaion and performance.
 * Based on resolver geolocation or EDNS client geolocation if available.
-* Limit bandwith by node with a global saturation indicator.
+* Limit bandwith by node.
 * Alerting based on error rate.
 * Logging to elasticsearch thru rsyslog.
 * API for monitoring and configuration changes.
@@ -20,7 +20,7 @@ A CDNBox is a node of CDNBoxd.
 
 ## How to install
 
-* Require node (8+ LTS) and npm. Production tested releases Node v8.9.4, v8.11.1, v8.11.4, v10.14.1
+* Require node (8+ LTS) and npm. Production tested releases Node v8.9.4, v8.11.1, v8.11.4, v10.14.1, v12.20.1.
 * git clone https://github.com/Francois-v3/CDNBoxd.git
 * npm install
 * download GeoLite2 Country from https://dev.maxmind.com/geoip/geoip2/geolite2/ and copy GeoLite2-Country.mmdb into CDNBoxd directory
@@ -35,7 +35,7 @@ Repeat for each node.
 
 When you have different nodes other different operators to run CDNBoxd, the major risk is bug. To manage this risk, we advice you to adopt a canari strategy. Choose a referral node that you upgrade first, then wait for at least one day and have a look to errors. If everything looks ok, upgrade an other set of nodes, wait a least one day. Repeat until all nodes are updated.
 
-We advice you to include added files in your deployment script or tool. For example, clone the repo files in another repo where you add node binary, node modules, GEO database and configuration file, then deploy with remote command  "git pull; systemctl restart cdnboxd.service". Automate your deployment, but keep a human to launch deployment of each set of nodes. 
+We advice you to include added files in your deployment script or tool. For example, clone the repo files in another repo where you add node modules, GEO database and configuration file, then deploy with remote command  "git pull; systemctl restart cdnboxd.service". Automate your deployment, but keep a human to launch deployment of each set of nodes. 
 
 ## Configuation file
 
@@ -57,9 +57,6 @@ All fields with default value are optionnal. Config is exactly the same on each 
   "httpserver": {
      "port": HTTP port,
      "authorization": HTTP credential (Basic xxxxxx)
-  },
-  "states": { 
-     "penalgdown": reduction of global saturation indicator period (default to 120)
   },
   "perf": { // optional
     "domain": domain to mesure,
@@ -99,8 +96,7 @@ All fields with default value are optionnal. Config is exactly the same on each 
       "proto": "http:" ou "https:", default protocol for this CDNBox (default to "https:"),
       "isns": is this CDNBox is a DNS server (default to false),
       "cname": serve CNAME record instead of A or AAAA, (default to false),
-      "penal": default value of global bandwith saturation indicator, default to 100. Will be increased
-               if BW saturated.
+      "penal": (obsolete) value returned by /cdn/penalite, default to 100.
       "ishttp": is this CDNBox serve HTTP (other than CDNBoxd trafic itself),
       "status": initial HTTP trafic status (on/off),
       "targetbw": target bandwith for this node,
@@ -169,7 +165,7 @@ All fields with default value are optionnal. Config is exactly the same on each 
 *  /cdn/image.gif: get a pixel image. Use by default to measure response time.
 *  /cdn/perf.js: get the script to measure cdnboxd performance (Resource Timing).
 *  /cdn/beacon: beacon to upload perf.js measurements.
-*  /cdn/penalite: return a saturation indicator (100 means no saturation, growing if saturated).
+*  /cdn/penalite: (obsolete) return cdnbox penal value.
 *  /cdn/whoami: return an 204 (no content), whith external IP in X-IP header (used to determine which node we are).
 
 ### global (with authentcation)
@@ -193,7 +189,6 @@ Config file (config-template.json) is:
 {
   "dnsserver": { "domain": "cdnboxd.mydomain.org", "port": 53, "nsnum": 2, "nsttl": 3600, "attl": 20 },
   "httpserver": { "port": 1080, "authorization": "Basic XXXXXXXXXX==" },
-  "states": { "penalgdown": 60 },
   "perf": {
     "domain": "www.mydomain.org", "beaconurl": "http://test.mydomain.org",
     "delay": 5000, "weights": { "FR": 50, "default": 100 }

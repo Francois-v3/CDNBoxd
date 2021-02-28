@@ -1,4 +1,8 @@
 
+* 1614502764
+ - penal becomes obsolete as it become useless. No more penalbucket calculation. /cdn/penalite return cdnbox's penal value for compatibility. It will be removed by march 2022.
+ - add details on uncaugth error.
+ - score calculation refactoring.
 * 1612124170
  - change varnish metrics format.
  - add dontderive field to varnishmetrics.

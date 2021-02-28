@@ -6,9 +6,6 @@
   "httpserver": {
     "port": 1080, "authorization": "Basic XXXXXXXXXX=="
   },
-  "states": {
-    "penalgdown": 60
-  },
   "perf": {
     "domain": "www.mydomain.org",
     "beaconurl": "http://radar.mydomain.org",

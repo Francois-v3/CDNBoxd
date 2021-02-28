@@ -20,10 +20,10 @@ A CDNBox is a node of CDNBoxd.
 
 ## How to install
 
-* Require node (8+ LTS) and npm. Production tested releases Node v8.9.4, v8.11.1, v8.11.4, v10.14.1, v12.20.1.
+* Require node (8+ LTS) and npm. Production tested with Node releases v8.9.4, v8.11.4, v10.14.1, v12.20.1, v14.16.0.
 * git clone https://github.com/Francois-v3/CDNBoxd.git
 * npm install
-* download GeoLite2 Country from https://dev.maxmind.com/geoip/geoip2/geolite2/ and copy GeoLite2-Country.mmdb into CDNBoxd directory
+* optional, download GeoLite2 Country from https://dev.maxmind.com/geoip/geoip2/geolite2/ and copy GeoLite2-Country.mmdb into CDNBoxd directory
 * copy config-template.json to config.json and change it to your settings.
 * copy cdnboxd-template.service to cdnboxd.service and change \<home\> to your directory.
 * install cdnboxd.service into systemd
@@ -58,7 +58,7 @@ All fields with default value are optionnal. Config is exactly the same on each 
      "port": HTTP port,
      "authorization": HTTP credential (Basic xxxxxx)
   },
-  "perf": { // optional
+  "perf": { // optional, needs Geolation activated.
     "domain": domain to mesure,
     "beaconurl": beacon URL prefix,
     "delay": time to start measurment,
@@ -82,7 +82,7 @@ All fields with default value are optionnal. Config is exactly the same on each 
     "ttl": duration of keys in ms, defaults to 86400000 (1 day),
     "refresh": refresh period in ms. defaults to 3600000 (1 hour),
   },
-  "tcprtt": { // if present, collect TCP RTT metrics.
+  "tcprtt": { // if present, collect TCP RTT metrics, needs Geolocation.
     "period": collect period in ms. defaults to 5000 (5 seconds),
   },
   "clustersecret": secretkey of cluster, use for communication between nodes, default to httpserver.authorization.

@@ -1,3 +1,5 @@
+* 1614767112
+ - Fix tlsticket problem.
 * 1614512040
  - upgrade to maxmind 4.3.1
  - Geolocation is now optional. Desactivated if Geo DB is absent. Perf an tcprtt needs geolocation.

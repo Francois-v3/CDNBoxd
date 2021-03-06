@@ -1,3 +1,5 @@
+* 1615057381
+ - fix potential startup race condition problem
 * 1614767112
  - Fix tlsticket problem.
 * 1614512040

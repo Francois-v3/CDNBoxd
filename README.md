@@ -1,17 +1,17 @@
 # CDNBoxd
 A DNS distributed Global Load Balancing with geolocation and bandwith shaping.
 
-CDNBox is a solution to mix private CDN with legacy CDN. CDNBoxd is originaly the specific software used to clusterize multiple CDNBoxes. Nowdays, CDNBoxd is used out of CDNBox solution, to distribute load on Edge endpoints.
-A CDNBox is a node of CDNBoxd.
+CDNBoxd is a solution to mix private CDN with legacy CDN. CDNBoxd is originaly the specific software used to clusterize multiple CDNBoxes (standalone HTTP cache). Nowdays, CDNBoxd is used out of CDNBox solution, to distribute load on Edge endpoints.
+Due to its origins, CDNBox stands for a node of a CDNBoxd cluster.
 
 ## Features
 
 * DNS load balancer
 * Distribute DNS/HTTP trafic based on geolocaion and performance.
 * Based on resolver geolocation or EDNS client geolocation if available.
-* Limit bandwith by node.
+* Limit bandwith by node/CDNBox.
 * Alerting based on error rate.
-* Logging to elasticsearch thru rsyslog.
+* Logging to elasticsearch thru rsyslog or Metricbeat.
 * API for monitoring and configuration changes.
 * UI (companion project), https://github.com/Doloros/CDNBOX-d-Admin
 * Client side DNS resolution and connection time measurment based on Resource Timing.
@@ -23,19 +23,19 @@ A CDNBox is a node of CDNBoxd.
 * Require node (8+ LTS) and npm. Production tested with Node releases v8.9.4, v8.11.4, v10.14.1, v12.20.1, v14.16.0.
 * git clone https://github.com/Francois-v3/CDNBoxd.git
 * npm install
-* optional, download GeoLite2 Country from https://dev.maxmind.com/geoip/geoip2/geolite2/ and copy GeoLite2-Country.mmdb into CDNBoxd directory
+* optional, download GeoLite2 Country from https://dev.maxmind.com/geoip/geoip2/geolite2/ and copy GeoLite2-Country.mmdb into CDNBoxd directory.
 * copy config-template.json to config.json and change it to your settings.
 * copy cdnboxd-template.service to cdnboxd.service and change \<home\> to your directory.
-* install cdnboxd.service into systemd
-* start CDNBoxd with "systemctl start cdnboxd.service"
+* install cdnboxd.service into systemd.
+* start CDNBoxd with "systemctl start cdnboxd.service".
 
 Repeat for each node.
 
 ## Deployment and upgrade tips
 
-When you have different nodes other different operators to run CDNBoxd, the major risk is bug. To manage this risk, we advice you to adopt a canari strategy. Choose a referral node that you upgrade first, then wait for at least one day and have a look to errors. If everything looks ok, upgrade an other set of nodes, wait a least one day. Repeat until all nodes are updated.
+When you have different CDNBoxd nodes on different operators, the major risk is bug. To manage this risk, we advice you to adopt a canari deployment strategy. Choose a referral node that you upgrade first, then wait for at least one day and have a look to errors. If everything looks ok, upgrade an other set of nodes, wait a least one day. Repeat until all nodes are updated.
 
-We advice you to include added files in your deployment script or tool. For example, clone the repo files in another repo where you add node modules, GEO database and configuration file, then deploy with remote command  "git pull; systemctl restart cdnboxd.service". Automate your deployment, but keep a human to launch deployment of each set of nodes. 
+We advice you to include added files in your deployment script or tool. For example, clone the repo files in another repo where you add node modules, GEO database and configuration file, then deploy with remote command  "git pull; systemctl restart cdnboxd.service". Automate your deployment, but keep launch decision by human. 
 
 ## Configuation file
 
@@ -232,5 +232,4 @@ DNS records:
 * cdnboxd.mydomain.org IN NS node2.mydomain.org.
 * www.mydomain.org IN CNAME a1.cdnboxd.mydomain.org.
 * test.mydomain.org IN CNAME test.cdnboxd.mydomain.org.
-
 

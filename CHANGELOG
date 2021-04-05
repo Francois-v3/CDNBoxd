@@ -1,3 +1,8 @@
+* 1617641084
+ - adding logjsonobject flag to add {, } and timestamp to log. Now directly usable by filebeat.
+* 1617625070
+ - remove memory metric from log as it's now present in /cdn/status.
+ - add memory RSS consumption in console. 
 * 1615057381
  - fix potential startup race condition problem
 * 1614767112

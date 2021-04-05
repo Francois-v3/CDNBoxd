@@ -64,7 +64,8 @@ All fields with default value are optionnal. Config is exactly the same on each 
     "delay": time to start measurment,
     "weights": measurment weight by country (percentage), ex: { "FR": 50, "default": 100 },
   },
-
+  "logjsonobject": optional defaults to false. If set to true, adds timestamp write one JSON objet per line, with
+                   leading { and ending }.
   "varnishmetricsoutput": optional, defaults to "log". If "log" a log record is isuued each 10s. If "status" a
                log record is issued for each call to /cdn/status and results are included in status response.
   "varnishmetrics":   // optional

@@ -1,0 +1,9 @@
+/var/log/cdnboxd.log {
+    daily
+    rotate 7
+    missingok
+    notifempty
+    compress
+    delaycompress
+    copytruncate
+}

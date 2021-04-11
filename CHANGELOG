@@ -1,3 +1,5 @@
+* 1618136439
+ - change console to stream to avoid synchronous write.
 * 1617641084
  - adding logjsonobject flag to add {, } and timestamp to log. Now directly usable by filebeat.
 * 1617625070

@@ -1,0 +1,16 @@
+[Unit]
+Description=CDNBoxd Service
+After=nss-lookup.target
+Wants=nss-lookup.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/CDNBoxPack/CDNBoxd
+Environment="UV_THREADPOOL_SIZE=16"
+StandardOutput=append:/var/log/cdnboxd.log
+StandardError=journal
+ExecStart=/home/CDNBoxPack/CDNBoxd/node --min_semi_space_size=20 lib/cdnboxd.js
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

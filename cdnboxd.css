@@ -3,6 +3,7 @@
 .bw.ovbw, .alert { background-color: red; }
 .head .action { margin: 0 30px; }
 .head .name { font-size: 150%; }
+.boxname { font-size: 70%; }
 .head .dnscount { margin-left: 20px; }
 .memory { margin-left: 30px; }
 table { width: 100%; }
@@ -10,4 +11,5 @@ th { background-color: #D0D0D0; }
 td.name { }
 td.number { text-align: right; }
 td.status { text-align: center; }
+td.total { background-color: #E0E0E0; }
 

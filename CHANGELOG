@@ -1,3 +1,5 @@
+* 1619026541
+ - introducing appli statistic console.
 * 1618136439
  - change console to stream to avoid synchronous write.
 * 1617641084

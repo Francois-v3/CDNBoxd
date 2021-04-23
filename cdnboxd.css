@@ -1,7 +1,7 @@
 
 .bw, .normal { background-color: #b4ff8c; }
 .bw.ovbw, .alert { background-color: red; }
-.head .action { margin: 0 30px; }
+.head .action,.uptime { margin: 0 0 0 30px; }
 .head .name { font-size: 150%; }
 .boxname { font-size: 70%; }
 .head .dnscount { margin-left: 20px; }
@@ -12,4 +12,5 @@ td.name { }
 td.number { text-align: right; }
 td.status { text-align: center; }
 td.total { background-color: #E0E0E0; }
+.applistats .number { font-size: 80%; }
 

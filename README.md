@@ -174,9 +174,7 @@ All fields with default value are optionnal. Config is exactly the same on each 
 *  /cdn/cdnboxStates: dumps memory of cdnbox in JSON format (debuging).
 *  /cdn/api/states: returns a JSON with metrics and state of cdnbox.
 *  /cdn/cdnboxes: returns a HTML with metrics and state of cdnbox.
-*  /cdn/applis: returns a HTML with metrics of applis.
 *  /cdn/console: show a summary of all cdnboxes.
-*  /cdn/appliconsole: show a summary of appli stats on all cdnboxes.
 
 ### Config API (authentication required).
 *  /cdn/config GET: get the config.json content of cdnbox.

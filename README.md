@@ -2,7 +2,6 @@
 A DNS distributed Global Load Balancing with geolocation and bandwith shaping.
 
 CDNBoxd is a solution to mix private CDN with legacy CDN. CDNBoxd is originaly the specific software used to clusterize multiple CDNBoxes (standalone HTTP cache). Nowdays, CDNBoxd is used out of CDNBox solution, to distribute load on Edge endpoints.
-Due to its origins, CDNBox stands for a node of a CDNBoxd cluster.
 
 ## Features
 
@@ -17,6 +16,7 @@ Due to its origins, CDNBox stands for a node of a CDNBoxd cluster.
 * Client side DNS resolution and connection time measurment based on Resource Timing.
 * varnishstat metric collector.
 * CDNBox's specific (local) service testing (HTTP).
+* Aliases permits to give different FQDN to the same appli.
 
 ## How to install
 
@@ -33,6 +33,7 @@ Repeat for each node.
 
 ## Deployment and upgrade tips
 
+Due to its origins, CDNBox stands for a node of a CDNBoxd cluster and appli stands for trafic distribution policy.
 When you have different CDNBoxd nodes on different operators, the major risk is bug. To manage this risk, we advice you to adopt a canari deployment strategy. Choose a referral node that you upgrade first, then wait for at least one day and have a look to errors. If everything looks ok, upgrade an other set of nodes, wait a least one day. Repeat until all nodes are updated.
 
 We advice you to include added files in your deployment script or tool. For example, clone the repo files in another repo where you add node modules, GEO database and configuration file, then deploy with remote command  "git pull; systemctl restart cdnboxd.service". Automate your deployment, but keep launch decision by human. 
@@ -180,6 +181,12 @@ All fields with default value are optionnal. Config is exactly the same on each 
 *  /cdn/config GET: get the config.json content of cdnbox.
 *  /cdn/config PUT: set the config.json on cdnbox and reload the config.
 *  /cdn/config/copyfrom/\<cdnboxname\>: copy and reload the config.json from \<cdnboxname\> on cdnbox.
+
+### Alias API (authentication required).
+*  /cdn/alias GET: get aliases JSON content of cdnbox.
+*  /cdn/alias PUT: set and save aliases on ALL cdnbox. release must be equal to aliases's cluster release. Alias
+                   names are limited to lowercase letter and number digits.
+*  /cdn/aliasmanager: Edit aliases.
 
 ## Example
 

@@ -13,4 +13,11 @@ td.number { text-align: right; }
 td.status { text-align: center; }
 td.total { background-color: #E0E0E0; }
 .applistats .number { font-size: 80%; }
+.aliasstats .number { font-size: 80%; }
+#aliases, #addbutton { background-color: #E0E0E0; width: 340px; }
+#aliases div { display: inline-block; }
+#aliases div.aliascol { width: 160px; }
+#aliases div.targetcol { width: 70px; }
+#aliases div.countcol { width: 40px; }
+#aliases div.deletecol { width: 40px; }
 

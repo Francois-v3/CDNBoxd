@@ -14,10 +14,18 @@ td.status { text-align: center; }
 td.total { background-color: #E0E0E0; }
 .applistats .number { font-size: 80%; }
 .aliasstats .number { font-size: 80%; }
+
 #aliases, #addbutton { background-color: #E0E0E0; width: 340px; }
 #aliases div { display: inline-block; }
 #aliases div.aliascol { width: 160px; }
 #aliases div.targetcol { width: 70px; }
 #aliases div.countcol { width: 40px; }
 #aliases div.deletecol { width: 40px; }
+
+#aliasmanager { display: none; position: fixed; top: 50px; left: 35px; width: 400px; height: 500px;
+  border: 5px solid #73AD21; background-color: white; z-index: 4; }
+
+#overlay { display: none; position: fixed; width: 100%; height: 100%; top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.5); z-index: 2; cursor: pointer;
+}
 

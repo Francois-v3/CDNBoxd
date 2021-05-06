@@ -1,3 +1,5 @@
+* 1620318967
+ - cdnboxd: aliases CSS and logs fixes.
 * 1620166168
  - add target in console aliases.
  - fix aliases propagation problem.

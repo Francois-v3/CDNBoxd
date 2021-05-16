@@ -15,14 +15,17 @@ td.total { background-color: #E0E0E0; }
 .applistats .number { font-size: 80%; }
 .aliasstats .number { font-size: 80%; }
 
+#aliasmenu { background-color: grey; }
+#aliasmenu label, #reload { margin-left: 10px; }
 #aliases, #addbutton { background-color: #E0E0E0; width: 380px; }
 #aliases div { display: inline-block; }
 #aliases div.aliascol { width: 120px; }
 #aliases div.aliascol input { width: 110px; }
 #aliases div.targetcol { width: 135px; }
 #aliases div.targetcol select { width: 125px; }
-#aliases div.countcol { width: 40px; }
+#aliases div.countcol { width: 40px; text-align: right; font-size: 80%; }
 #aliases div.deletecol { width: 40px; }
+#update { background-color: red; }
 
 #aliasmanager { display: none; position: fixed; top: 50px; left: 35px; width: 400px; height: 500px;
   border: 5px solid #73AD21; background-color: white; z-index: 4; }
@@ -31,5 +34,3 @@ td.total { background-color: #E0E0E0; }
   background-color: rgba(0,0,0,0.5); z-index: 2; cursor: pointer;
 }
 
-#updatespan { margin-left: 20px; }
-#update { background-color: red; }

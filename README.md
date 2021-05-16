@@ -113,7 +113,7 @@ All fields with default value are optionnal. Config is exactly the same on each 
       "nspriorityratio": used to change distribution of a node un NS list in case of natural node overload.
                          Default to 1. 0 means maximum.
       "nsgroup": if defined, enforce that nslist contains always different nsgroup. Usually, nsgroup
-                 contains operator's name.
+                 contains network operator's name. Useless if number of isns cdnbox is less than nsnum.
       "varnishmetrics": if true, we collect varnishstate metric defined in "varnishmetrics". Defaults to false.
       "localtests": define local http test (to be used in appli section). [
         { "name": name of the test. Warning, only fisrt letter is shown in console. 

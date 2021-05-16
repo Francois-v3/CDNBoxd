@@ -1,3 +1,7 @@
+* 1621193262
+ - reduce count number size in aliasmanager. 
+ - Alias manager makeup. 
+ - take care of nsgroup even if nsnum = 2.
 * 1620318967
  - cdnboxd: aliases CSS and logs fixes.
 * 1620166168

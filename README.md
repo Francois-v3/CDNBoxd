@@ -141,13 +141,15 @@ All fields with default value are optionnal. Config is exactly the same on each 
   "applis": [
     "a1": [
       {
-        // first node will be serve if none of the other match.
+        // first cdnbox will be serve if none of the other match.
         "cdnbox": "ABC-victim2" node's name,
         "addscore": if defined, overload addscore for this node in this application,
         "fixscore": if defined, overload fixscore for this node in this application,
         "countries": if defined, overload cdnbox's countries "ALL", or [ "US", "CA" ],
         "continents": if defined, overload cdnbox's continents, like [ "EU", "NA" ]. 
-        "localtests": if defined, exclude this cdnbox if one the test is false. [ "apache", ... ]
+        "localtests": if defined, exclude this cdnbox if one the test is false. [ "apache", ... ].
+                      Warning, this does not work for first cdnbox (default). Add a first redondant
+                      cdnbox with a hight fixscore to avoid this problem.
       },
       { ...
       }

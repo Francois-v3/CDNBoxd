@@ -4,9 +4,31 @@
   "description": "A DNS distributed Global Load Balancing with geolocation and bandwith shaping.",
   "main": "lib/cdnboxd.js",
   "dependencies": {
-    "maxmind": "^4.3.1",
-    "nodemailer": "^4.6.4"
-  },
+    "maxmind": {
+      "version": "4.3.1",
+      "resolved": "https://registry.npmjs.org/maxmind/-/maxmind-4.3.1.tgz",
+      "integrity": "sha1-sgED8Z6fwS5NFhiBQ4DYmgD2V3A=",
+      "requires": {
+        "mmdb-lib": "1.2.0",
+        "tiny-lru": "7.0.6"
+      }
+    },
+    "mmdb-lib": {
+      "version": "1.2.0",
+      "resolved": "https://registry.npmjs.org/mmdb-lib/-/mmdb-lib-1.2.0.tgz",
+      "integrity": "sha1-Ds2T9JQvZaLQm+BQL6kSaTlgZyc="
+    },
+    "nodemailer": {
+      "version": "6.6.1",
+      "resolved": "https://registry.npmjs.org/nodemailer/-/nodemailer-6.6.1.tgz",
+      "integrity": "sha512-1xzFN3gqv+/qJ6YRyxBxfTYstLNt0FCtZaFRvf4Sg9wxNGWbwFmGXVpfSi6ThGK6aRxAo+KjHtYSW8NvCsNSAg=="
+    },
+    "tiny-lru": {
+      "version": "7.0.6",
+      "resolved": "https://registry.npmjs.org/tiny-lru/-/tiny-lru-7.0.6.tgz",
+      "integrity": "sha1-sMPN7eHliCqi0a4hyyzszyozHyQ="
+    }
+  }
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

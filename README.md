@@ -93,8 +93,8 @@ All fields with default value are optionnal. Config is exactly the same on each 
       "hostname": node's hostname without final dot,
       "countries": node's country localisation, "ALL" or array of countries like [ "US", "CA" ],
       "continents": node's continent localisation, array like [ "EU", "NA" ]. For NS records order, we use
-                    array of countries, then continent, then country "ALL". For A and AAAA records, we use
-                    continents only if no conntries are defined.
+                    array of countries, then continent, then country "ALL". For A and AAAA records, we now
+                    use both continents and conntries.
       "proto": "http:" ou "https:", default protocol for this CDNBox (default to "https:"),
       "isns": is this CDNBox is a DNS server (default to false),
       "cname": serve CNAME record instead of A or AAAA, (default to false),

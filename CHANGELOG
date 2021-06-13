@@ -1,3 +1,7 @@
+* 1623577644
+ - for geolocation, we now use continent if country is defined and doesn't match (was don't use continent).
+* 1623571584 
+ - fix geodata loading problem with tcprtt.
 * 1621271140
  - reduce count number size in aliases and applis.
 * 1621193262

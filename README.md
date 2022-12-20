@@ -51,8 +51,8 @@ All fields with default value are optionnal. Config is exactly the same on each 
      "attl": ttl for A and AAAA records (second), 
      "dnscountdownratio" : global request rate reduction ratio (default to 1.2).
      "dnscountavgmin": minimum global request rate by node (default to 1.5).
-     "globalthrottlelimit": global request rate growup ratio to throttle (default to 2), only or cdnboxes
-                            with targetbw.
+     "globalthrottlelimit": global request rate growup ratio to throttle (default to 2), only
+                            for cdnboxes with targetbw.
      "globalthrottlebwratio": targetbw ratio to activate global request throttle (default to 0.4).
   },
   "httpserver": {
@@ -65,13 +65,15 @@ All fields with default value are optionnal. Config is exactly the same on each 
     "delay": time to start measurment,
     "weights": measurment weight by country (percentage), ex: { "FR": 50, "default": 100 },
   },
-  "logjsonobject": optional defaults to false. If set to true, adds timestamp write one JSON objet per line, with
-                   leading { and ending }.
-  "varnishmetricsoutput": optional, defaults to "log". If "log" a log record is isuued each 10s. If "status" a
-               log record is issued for each call to /cdn/status and results are included in status response.
+  "logjsonobject": optional defaults to false. If set to true, adds timestamp write one JSON objet
+                   per line, with leading { and ending }.
+  "varnishmetricsoutput": optional, defaults to "log". If "log" a log record is isuued each 10s.
+               If "status" a log record is issued for each call to /cdn/status and results are
+               included in status response.
   "varnishmetrics":   // optional
-    "es_name": "varnish_name", [Obsolete format] define a varnish numeric metric. varnish_name is the varnishstat
-               entry name. es_name is the json name sent to ES. If varnish_name is not present, -1 value will be set.
+    "es_name": "varnish_name", [Obsolete format] define a varnish numeric metric. varnish_name is
+               the varnishstat entry name. es_name is the json name sent to ES. If varnish_name is
+               not present, -1 value will be set.
     "es_name": { es_name is the json name sent to ES. If varnish_name is not present, -1 value will be set. 
       "vname": "varnish_name", varnish's name of the numeric metric. varnish_name is the varnishstat entry name.
       "dontderive": optional, default to false. If the varnish metric is a counter, it is automatically derivated.

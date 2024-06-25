@@ -1,3 +1,9 @@
+* 1623749516
+ - Refactoring NODATA response
+* 1623715934
+ - Fix: if conuntry doesn't patch, try continent if continents exist
+* 1623709966
+ - add SOA authority in type 65 answer.
 * 1623577644
  - for geolocation, we now use continent if country is defined and doesn't match (was don't use continent).
 * 1623571584 

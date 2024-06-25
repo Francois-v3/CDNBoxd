@@ -1,3 +1,11 @@
+* 1718804269
+ - Trap uncaugth exception on socket errors
+* 1718728053
+ - Upgrade bounded node binary to 20.14.
+* 1718726813
+ - Upgrade to nodejs v20.14.0 modules: maxmind@4.3.20, mmdb-lib@2.1.1, nodemailer@6.9.13, tiny-lru@11.2.6
+* 1671486690
+ - Convert JSON log to ECS
 * 1623749516
  - Refactoring NODATA response
 * 1623715934

@@ -20,7 +20,7 @@ CDNBoxd is a solution to mix private CDN with legacy CDN. CDNBoxd is originaly t
 
 ## How to install
 
-* Require node (8+ LTS) and npm. Production tested with Node releases v8.9.4, v8.11.4, v10.14.1, v12.20.1, v14.16.0.
+* Require node (8+ LTS) and npm. Production tested with Node releases v8.9.4, v8.11.4, v10.14.1, v12.20.1, v14.16.0, v20.14.
 * git clone https://github.com/Francois-v3/CDNBoxd.git
 * npm install
 * optional, download GeoLite2 Country from https://dev.maxmind.com/geoip/geoip2/geolite2/ and copy GeoLite2-Country.mmdb into CDNBoxd directory.

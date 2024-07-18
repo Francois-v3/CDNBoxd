@@ -1,3 +1,5 @@
+* 1720986899
+ - Fix multiline error log message.
 * 1718804269
  - Trap uncaugth exception on socket errors
 * 1718728053
